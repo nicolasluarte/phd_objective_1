@@ -1,0 +1,261 @@
+ensembl_gene_id,Var2,Freq,rank,entrez,symbol,chr,start,end,strand,biotype,description,iteration
+ENSMUSG00000022041,MeanDecreaseGini,0.5085714285714286,1,110902,Chrna2,14,66372488,66390397,1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 2 (neuronal)",1
+ENSMUSG00000096225,MeanDecreaseGini,0.48,2,16875,Lhx8,3,154011931,154036296,-1,protein_coding,LIM homeobox protein 8,1
+ENSMUSG00000005716,MeanDecreaseGini,0.29142857142857137,3,19293,Pvalb,15,78075314,78090600,-1,protein_coding,parvalbumin,1
+ENSMUSG00000067724,MeanDecreaseGini,0.2628571428571428,4,231044,Gbx1,5,24707755,24732200,-1,protein_coding,gastrulation brain homeobox 1,1
+ENSMUSG00000039714,MeanDecreaseGini,0.22857142857142865,5,235415,Cplx3,9,57507275,57513564,-1,protein_coding,complexin 3,1
+ENSMUSG00000045471,MeanDecreaseGini,0.16,6,15171,Hcrt,11,100651895,100653757,-1,protein_coding,hypocretin,1
+ENSMUSG00000035383,MeanDecreaseGini,0.13714285714285715,7,110312,Pmch,10,87926934,87928237,1,protein_coding,pro-melanin-concentrating hormone,1
+ENSMUSG00000078689,MeanDecreaseGini,0.13714285714285712,8,620807,Mup6,4,59964294,60007274,1,protein_coding,major urinary protein 6,1
+ENSMUSG00000044988,MeanDecreaseGini,0.10285714285714284,9,83428,Ucn3,13,3990688,3995349,-1,protein_coding,urocortin 3,1
+ENSMUSG00000041046,MeanDecreaseGini,0.09714285714285714,10,56089,Ramp3,11,6608521,6627475,1,protein_coding,receptor (calcitonin) activity modifying protein 3,1
+ENSMUSG00000026475,MeanDecreaseGini,0.09142857142857144,11,19734,Rgs16,1,153616095,153621214,1,protein_coding,regulator of G-protein signaling 16,1
+ENSMUSG00000031491,MeanDecreaseGini,0.08571428571428572,12,11440,Chrna6,8,27893240,27903972,-1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 6",1
+ENSMUSG00000035202,MeanDecreaseGini,0.08571428571428572,13,102436,Lars2,9,123195992,123291731,1,protein_coding,"leucyl-tRNA synthetase, mitochondrial",1
+ENSMUSG00000028023,MeanDecreaseGini,0.06857142857142856,14,18741,Pitx2,3,128993527,129013240,1,protein_coding,paired-like homeodomain transcription factor 2,1
+ENSMUSG00000064179,MeanDecreaseGini,0.06285714285714285,15,21955,Tnnt1,7,4507569,4519381,-1,protein_coding,"troponin T1, skeletal, slow",1
+ENSMUSG00000050315,MeanDecreaseGini,0.05714285714285713,16,118449,Synpo2,3,122870168,123029798,-1,protein_coding,synaptopodin 2,1
+ENSMUSG00000021948,MeanDecreaseGini,0.04571428571428571,17,18753,Prkcd,14,30317311,30348167,-1,protein_coding,"protein kinase C, delta",1
+ENSMUSG00000029054,MeanDecreaseGini,0.03428571428571428,18,14403,Gabrd,4,155469437,155482569,-1,protein_coding,"gamma-aminobutyric acid (GABA) A receptor, subunit delta",1
+ENSMUSG00000032532,MeanDecreaseGini,0.02857142857142856,19,12424,Cck,9,121318890,121324760,-1,protein_coding,cholecystokinin,1
+ENSMUSG00000027985,MeanDecreaseGini,0.02857142857142856,20,16842,Lef1,3,130904120,131018005,1,protein_coding,lymphoid enhancer binding factor 1,1
+ENSMUSG00000030905,MeanDecreaseGini,0.01714285714285714,21,12971,Crym,7,119785603,119801334,-1,protein_coding,"crystallin, mu",1
+ENSMUSG00000070570,MeanDecreaseGini,0,22,72961,Slc17a7,7,44813373,44825566,1,protein_coding,"solute carrier family 17 (sodium-dependent inorganic phosphate cotransporter), member 7",1
+ENSMUSG00000027301,MeanDecreaseGini,0,23,18429,Oxt,2,130418093,130418974,1,protein_coding,oxytocin,1
+ENSMUSG00000005892,MeanDecreaseGini,0,24,22044,Trh,6,92219042,92221631,-1,protein_coding,thyrotropin releasing hormone,1
+ENSMUSG00000038764,MeanDecreaseGini,0,25,545622,Ptpn3,4,57190841,57301837,-1,protein_coding,"protein tyrosine phosphatase, non-receptor type 3",1
+ENSMUSG00000049892,MeanDecreaseGini,0,26,19416,Rasd1,11,59854007,59855770,-1,protein_coding,"RAS, dexamethasone-induced 1",1
+ENSMUSG00000039714,MeanDecreaseGini,0.45714285714285713,1,235415,Cplx3,9,57507275,57513564,-1,protein_coding,complexin 3,2
+ENSMUSG00000067724,MeanDecreaseGini,0.37714285714285706,2,231044,Gbx1,5,24707755,24732200,-1,protein_coding,gastrulation brain homeobox 1,2
+ENSMUSG00000022041,MeanDecreaseGini,0.35428571428571426,3,110902,Chrna2,14,66372488,66390397,1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 2 (neuronal)",2
+ENSMUSG00000096225,MeanDecreaseGini,0.3371428571428571,4,16875,Lhx8,3,154011931,154036296,-1,protein_coding,LIM homeobox protein 8,2
+ENSMUSG00000005716,MeanDecreaseGini,0.2857142857142857,5,19293,Pvalb,15,78075314,78090600,-1,protein_coding,parvalbumin,2
+ENSMUSG00000030905,MeanDecreaseGini,0.14285714285714285,6,12971,Crym,7,119785603,119801334,-1,protein_coding,"crystallin, mu",2
+ENSMUSG00000045471,MeanDecreaseGini,0.13142857142857142,7,15171,Hcrt,11,100651895,100653757,-1,protein_coding,hypocretin,2
+ENSMUSG00000021948,MeanDecreaseGini,0.12,8,18753,Prkcd,14,30317311,30348167,-1,protein_coding,"protein kinase C, delta",2
+ENSMUSG00000026475,MeanDecreaseGini,0.11428571428571428,9,19734,Rgs16,1,153616095,153621214,1,protein_coding,regulator of G-protein signaling 16,2
+ENSMUSG00000031491,MeanDecreaseGini,0.10857142857142858,10,11440,Chrna6,8,27893240,27903972,-1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 6",2
+ENSMUSG00000064179,MeanDecreaseGini,0.09714285714285714,11,21955,Tnnt1,7,4507569,4519381,-1,protein_coding,"troponin T1, skeletal, slow",2
+ENSMUSG00000032532,MeanDecreaseGini,0.09142857142857144,12,12424,Cck,9,121318890,121324760,-1,protein_coding,cholecystokinin,2
+ENSMUSG00000035383,MeanDecreaseGini,0.08571428571428572,13,110312,Pmch,10,87926934,87928237,1,protein_coding,pro-melanin-concentrating hormone,2
+ENSMUSG00000028023,MeanDecreaseGini,0.06857142857142856,14,18741,Pitx2,3,128993527,129013240,1,protein_coding,paired-like homeodomain transcription factor 2,2
+ENSMUSG00000041046,MeanDecreaseGini,0.06285714285714285,15,56089,Ramp3,11,6608521,6627475,1,protein_coding,receptor (calcitonin) activity modifying protein 3,2
+ENSMUSG00000035202,MeanDecreaseGini,0.06285714285714285,16,102436,Lars2,9,123195992,123291731,1,protein_coding,"leucyl-tRNA synthetase, mitochondrial",2
+ENSMUSG00000027985,MeanDecreaseGini,0.04571428571428571,17,16842,Lef1,3,130904120,131018005,1,protein_coding,lymphoid enhancer binding factor 1,2
+ENSMUSG00000044988,MeanDecreaseGini,0.03428571428571428,18,83428,Ucn3,13,3990688,3995349,-1,protein_coding,urocortin 3,2
+ENSMUSG00000038764,MeanDecreaseGini,0.02857142857142856,19,545622,Ptpn3,4,57190841,57301837,-1,protein_coding,"protein tyrosine phosphatase, non-receptor type 3",2
+ENSMUSG00000049892,MeanDecreaseGini,0.02857142857142856,20,19416,Rasd1,11,59854007,59855770,-1,protein_coding,"RAS, dexamethasone-induced 1",2
+ENSMUSG00000029054,MeanDecreaseGini,0,21,14403,Gabrd,4,155469437,155482569,-1,protein_coding,"gamma-aminobutyric acid (GABA) A receptor, subunit delta",2
+ENSMUSG00000070570,MeanDecreaseGini,0,22,72961,Slc17a7,7,44813373,44825566,1,protein_coding,"solute carrier family 17 (sodium-dependent inorganic phosphate cotransporter), member 7",2
+ENSMUSG00000027301,MeanDecreaseGini,0,23,18429,Oxt,2,130418093,130418974,1,protein_coding,oxytocin,2
+ENSMUSG00000005892,MeanDecreaseGini,0,24,22044,Trh,6,92219042,92221631,-1,protein_coding,thyrotropin releasing hormone,2
+ENSMUSG00000078689,MeanDecreaseGini,0,25,620807,Mup6,4,59964294,60007274,1,protein_coding,major urinary protein 6,2
+ENSMUSG00000050315,MeanDecreaseGini,0,26,118449,Synpo2,3,122870168,123029798,-1,protein_coding,synaptopodin 2,2
+ENSMUSG00000005716,MeanDecreaseGini,0.3828571428571428,1,19293,Pvalb,15,78075314,78090600,-1,protein_coding,parvalbumin,3
+ENSMUSG00000067724,MeanDecreaseGini,0.37142857142857144,2,231044,Gbx1,5,24707755,24732200,-1,protein_coding,gastrulation brain homeobox 1,3
+ENSMUSG00000022041,MeanDecreaseGini,0.3657142857142856,3,110902,Chrna2,14,66372488,66390397,1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 2 (neuronal)",3
+ENSMUSG00000096225,MeanDecreaseGini,0.3257142857142857,4,16875,Lhx8,3,154011931,154036296,-1,protein_coding,LIM homeobox protein 8,3
+ENSMUSG00000039714,MeanDecreaseGini,0.22857142857142856,5,235415,Cplx3,9,57507275,57513564,-1,protein_coding,complexin 3,3
+ENSMUSG00000028023,MeanDecreaseGini,0.19428571428571428,6,18741,Pitx2,3,128993527,129013240,1,protein_coding,paired-like homeodomain transcription factor 2,3
+ENSMUSG00000035383,MeanDecreaseGini,0.15999999999999998,7,110312,Pmch,10,87926934,87928237,1,protein_coding,pro-melanin-concentrating hormone,3
+ENSMUSG00000045471,MeanDecreaseGini,0.14285714285714285,8,15171,Hcrt,11,100651895,100653757,-1,protein_coding,hypocretin,3
+ENSMUSG00000078689,MeanDecreaseGini,0.12,9,620807,Mup6,4,59964294,60007274,1,protein_coding,major urinary protein 6,3
+ENSMUSG00000064179,MeanDecreaseGini,0.09142857142857144,10,21955,Tnnt1,7,4507569,4519381,-1,protein_coding,"troponin T1, skeletal, slow",3
+ENSMUSG00000027301,MeanDecreaseGini,0.08571428571428569,11,18429,Oxt,2,130418093,130418974,1,protein_coding,oxytocin,3
+ENSMUSG00000021948,MeanDecreaseGini,0.07999999999999999,12,18753,Prkcd,14,30317311,30348167,-1,protein_coding,"protein kinase C, delta",3
+ENSMUSG00000027985,MeanDecreaseGini,0.07999999999999999,13,16842,Lef1,3,130904120,131018005,1,protein_coding,lymphoid enhancer binding factor 1,3
+ENSMUSG00000026475,MeanDecreaseGini,0.06857142857142856,14,19734,Rgs16,1,153616095,153621214,1,protein_coding,regulator of G-protein signaling 16,3
+ENSMUSG00000044988,MeanDecreaseGini,0.05714285714285713,15,83428,Ucn3,13,3990688,3995349,-1,protein_coding,urocortin 3,3
+ENSMUSG00000029054,MeanDecreaseGini,0.05142857142857142,16,14403,Gabrd,4,155469437,155482569,-1,protein_coding,"gamma-aminobutyric acid (GABA) A receptor, subunit delta",3
+ENSMUSG00000031491,MeanDecreaseGini,0.02857142857142856,17,11440,Chrna6,8,27893240,27903972,-1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 6",3
+ENSMUSG00000050315,MeanDecreaseGini,0.02857142857142856,18,118449,Synpo2,3,122870168,123029798,-1,protein_coding,synaptopodin 2,3
+ENSMUSG00000030905,MeanDecreaseGini,0.01714285714285714,19,12971,Crym,7,119785603,119801334,-1,protein_coding,"crystallin, mu",3
+ENSMUSG00000038764,MeanDecreaseGini,0.01714285714285714,20,545622,Ptpn3,4,57190841,57301837,-1,protein_coding,"protein tyrosine phosphatase, non-receptor type 3",3
+ENSMUSG00000041046,MeanDecreaseGini,0,21,56089,Ramp3,11,6608521,6627475,1,protein_coding,receptor (calcitonin) activity modifying protein 3,3
+ENSMUSG00000070570,MeanDecreaseGini,0,22,72961,Slc17a7,7,44813373,44825566,1,protein_coding,"solute carrier family 17 (sodium-dependent inorganic phosphate cotransporter), member 7",3
+ENSMUSG00000035202,MeanDecreaseGini,0,23,102436,Lars2,9,123195992,123291731,1,protein_coding,"leucyl-tRNA synthetase, mitochondrial",3
+ENSMUSG00000032532,MeanDecreaseGini,0,24,12424,Cck,9,121318890,121324760,-1,protein_coding,cholecystokinin,3
+ENSMUSG00000005892,MeanDecreaseGini,0,25,22044,Trh,6,92219042,92221631,-1,protein_coding,thyrotropin releasing hormone,3
+ENSMUSG00000049892,MeanDecreaseGini,0,26,19416,Rasd1,11,59854007,59855770,-1,protein_coding,"RAS, dexamethasone-induced 1",3
+ENSMUSG00000039714,MeanDecreaseGini,0.52,1,235415,Cplx3,9,57507275,57513564,-1,protein_coding,complexin 3,4
+ENSMUSG00000022041,MeanDecreaseGini,0.4457142857142858,2,110902,Chrna2,14,66372488,66390397,1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 2 (neuronal)",4
+ENSMUSG00000067724,MeanDecreaseGini,0.3828571428571429,3,231044,Gbx1,5,24707755,24732200,-1,protein_coding,gastrulation brain homeobox 1,4
+ENSMUSG00000096225,MeanDecreaseGini,0.34857142857142853,4,16875,Lhx8,3,154011931,154036296,-1,protein_coding,LIM homeobox protein 8,4
+ENSMUSG00000005716,MeanDecreaseGini,0.2514285714285714,5,19293,Pvalb,15,78075314,78090600,-1,protein_coding,parvalbumin,4
+ENSMUSG00000041046,MeanDecreaseGini,0.15428571428571428,6,56089,Ramp3,11,6608521,6627475,1,protein_coding,receptor (calcitonin) activity modifying protein 3,4
+ENSMUSG00000035383,MeanDecreaseGini,0.1257142857142857,7,110312,Pmch,10,87926934,87928237,1,protein_coding,pro-melanin-concentrating hormone,4
+ENSMUSG00000021948,MeanDecreaseGini,0.10285714285714284,8,18753,Prkcd,14,30317311,30348167,-1,protein_coding,"protein kinase C, delta",4
+ENSMUSG00000044988,MeanDecreaseGini,0.09714285714285714,9,83428,Ucn3,13,3990688,3995349,-1,protein_coding,urocortin 3,4
+ENSMUSG00000031491,MeanDecreaseGini,0.09142857142857144,10,11440,Chrna6,8,27893240,27903972,-1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 6",4
+ENSMUSG00000029054,MeanDecreaseGini,0.06857142857142856,11,14403,Gabrd,4,155469437,155482569,-1,protein_coding,"gamma-aminobutyric acid (GABA) A receptor, subunit delta",4
+ENSMUSG00000045471,MeanDecreaseGini,0.06285714285714285,12,15171,Hcrt,11,100651895,100653757,-1,protein_coding,hypocretin,4
+ENSMUSG00000070570,MeanDecreaseGini,0.06285714285714285,13,72961,Slc17a7,7,44813373,44825566,1,protein_coding,"solute carrier family 17 (sodium-dependent inorganic phosphate cotransporter), member 7",4
+ENSMUSG00000078689,MeanDecreaseGini,0.06285714285714285,14,620807,Mup6,4,59964294,60007274,1,protein_coding,major urinary protein 6,4
+ENSMUSG00000028023,MeanDecreaseGini,0.05714285714285713,15,18741,Pitx2,3,128993527,129013240,1,protein_coding,paired-like homeodomain transcription factor 2,4
+ENSMUSG00000064179,MeanDecreaseGini,0.03428571428571428,16,21955,Tnnt1,7,4507569,4519381,-1,protein_coding,"troponin T1, skeletal, slow",4
+ENSMUSG00000005892,MeanDecreaseGini,0.03428571428571428,17,22044,Trh,6,92219042,92221631,-1,protein_coding,thyrotropin releasing hormone,4
+ENSMUSG00000049892,MeanDecreaseGini,0.03428571428571428,18,19416,Rasd1,11,59854007,59855770,-1,protein_coding,"RAS, dexamethasone-induced 1",4
+ENSMUSG00000026475,MeanDecreaseGini,0.02857142857142856,19,19734,Rgs16,1,153616095,153621214,1,protein_coding,regulator of G-protein signaling 16,4
+ENSMUSG00000038764,MeanDecreaseGini,0.02857142857142856,20,545622,Ptpn3,4,57190841,57301837,-1,protein_coding,"protein tyrosine phosphatase, non-receptor type 3",4
+ENSMUSG00000032532,MeanDecreaseGini,0.01714285714285714,21,12424,Cck,9,121318890,121324760,-1,protein_coding,cholecystokinin,4
+ENSMUSG00000050315,MeanDecreaseGini,0.01714285714285714,22,118449,Synpo2,3,122870168,123029798,-1,protein_coding,synaptopodin 2,4
+ENSMUSG00000030905,MeanDecreaseGini,0,23,12971,Crym,7,119785603,119801334,-1,protein_coding,"crystallin, mu",4
+ENSMUSG00000035202,MeanDecreaseGini,0,24,102436,Lars2,9,123195992,123291731,1,protein_coding,"leucyl-tRNA synthetase, mitochondrial",4
+ENSMUSG00000027301,MeanDecreaseGini,0,25,18429,Oxt,2,130418093,130418974,1,protein_coding,oxytocin,4
+ENSMUSG00000027985,MeanDecreaseGini,0,26,16842,Lef1,3,130904120,131018005,1,protein_coding,lymphoid enhancer binding factor 1,4
+ENSMUSG00000096225,MeanDecreaseGini,0.5257142857142856,1,16875,Lhx8,3,154011931,154036296,-1,protein_coding,LIM homeobox protein 8,5
+ENSMUSG00000039714,MeanDecreaseGini,0.4228571428571427,2,235415,Cplx3,9,57507275,57513564,-1,protein_coding,complexin 3,5
+ENSMUSG00000005716,MeanDecreaseGini,0.2685714285714285,3,19293,Pvalb,15,78075314,78090600,-1,protein_coding,parvalbumin,5
+ENSMUSG00000022041,MeanDecreaseGini,0.2457142857142857,4,110902,Chrna2,14,66372488,66390397,1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 2 (neuronal)",5
+ENSMUSG00000041046,MeanDecreaseGini,0.22857142857142856,5,56089,Ramp3,11,6608521,6627475,1,protein_coding,receptor (calcitonin) activity modifying protein 3,5
+ENSMUSG00000045471,MeanDecreaseGini,0.20571428571428568,6,15171,Hcrt,11,100651895,100653757,-1,protein_coding,hypocretin,5
+ENSMUSG00000067724,MeanDecreaseGini,0.2,7,231044,Gbx1,5,24707755,24732200,-1,protein_coding,gastrulation brain homeobox 1,5
+ENSMUSG00000021948,MeanDecreaseGini,0.17714285714285713,8,18753,Prkcd,14,30317311,30348167,-1,protein_coding,"protein kinase C, delta",5
+ENSMUSG00000035383,MeanDecreaseGini,0.13714285714285712,9,110312,Pmch,10,87926934,87928237,1,protein_coding,pro-melanin-concentrating hormone,5
+ENSMUSG00000078689,MeanDecreaseGini,0.13142857142857142,10,620807,Mup6,4,59964294,60007274,1,protein_coding,major urinary protein 6,5
+ENSMUSG00000028023,MeanDecreaseGini,0.10285714285714284,11,18741,Pitx2,3,128993527,129013240,1,protein_coding,paired-like homeodomain transcription factor 2,5
+ENSMUSG00000031491,MeanDecreaseGini,0.10285714285714284,12,11440,Chrna6,8,27893240,27903972,-1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 6",5
+ENSMUSG00000044988,MeanDecreaseGini,0.10285714285714284,13,83428,Ucn3,13,3990688,3995349,-1,protein_coding,urocortin 3,5
+ENSMUSG00000035202,MeanDecreaseGini,0.06285714285714285,14,102436,Lars2,9,123195992,123291731,1,protein_coding,"leucyl-tRNA synthetase, mitochondrial",5
+ENSMUSG00000027985,MeanDecreaseGini,0.05714285714285713,15,16842,Lef1,3,130904120,131018005,1,protein_coding,lymphoid enhancer binding factor 1,5
+ENSMUSG00000064179,MeanDecreaseGini,0.03428571428571428,16,21955,Tnnt1,7,4507569,4519381,-1,protein_coding,"troponin T1, skeletal, slow",5
+ENSMUSG00000026475,MeanDecreaseGini,0.03428571428571428,17,19734,Rgs16,1,153616095,153621214,1,protein_coding,regulator of G-protein signaling 16,5
+ENSMUSG00000030905,MeanDecreaseGini,0.02857142857142856,18,12971,Crym,7,119785603,119801334,-1,protein_coding,"crystallin, mu",5
+ENSMUSG00000050315,MeanDecreaseGini,0.01714285714285714,19,118449,Synpo2,3,122870168,123029798,-1,protein_coding,synaptopodin 2,5
+ENSMUSG00000029054,MeanDecreaseGini,0,20,14403,Gabrd,4,155469437,155482569,-1,protein_coding,"gamma-aminobutyric acid (GABA) A receptor, subunit delta",5
+ENSMUSG00000070570,MeanDecreaseGini,0,21,72961,Slc17a7,7,44813373,44825566,1,protein_coding,"solute carrier family 17 (sodium-dependent inorganic phosphate cotransporter), member 7",5
+ENSMUSG00000027301,MeanDecreaseGini,0,22,18429,Oxt,2,130418093,130418974,1,protein_coding,oxytocin,5
+ENSMUSG00000032532,MeanDecreaseGini,0,23,12424,Cck,9,121318890,121324760,-1,protein_coding,cholecystokinin,5
+ENSMUSG00000005892,MeanDecreaseGini,0,24,22044,Trh,6,92219042,92221631,-1,protein_coding,thyrotropin releasing hormone,5
+ENSMUSG00000038764,MeanDecreaseGini,0,25,545622,Ptpn3,4,57190841,57301837,-1,protein_coding,"protein tyrosine phosphatase, non-receptor type 3",5
+ENSMUSG00000049892,MeanDecreaseGini,0,26,19416,Rasd1,11,59854007,59855770,-1,protein_coding,"RAS, dexamethasone-induced 1",5
+ENSMUSG00000067724,MeanDecreaseGini,0.39428571428571424,1,231044,Gbx1,5,24707755,24732200,-1,protein_coding,gastrulation brain homeobox 1,6
+ENSMUSG00000005716,MeanDecreaseGini,0.3828571428571429,2,19293,Pvalb,15,78075314,78090600,-1,protein_coding,parvalbumin,6
+ENSMUSG00000096225,MeanDecreaseGini,0.37714285714285706,3,16875,Lhx8,3,154011931,154036296,-1,protein_coding,LIM homeobox protein 8,6
+ENSMUSG00000022041,MeanDecreaseGini,0.3714285714285714,4,110902,Chrna2,14,66372488,66390397,1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 2 (neuronal)",6
+ENSMUSG00000039714,MeanDecreaseGini,0.3257142857142857,5,235415,Cplx3,9,57507275,57513564,-1,protein_coding,complexin 3,6
+ENSMUSG00000031491,MeanDecreaseGini,0.17714285714285713,6,11440,Chrna6,8,27893240,27903972,-1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 6",6
+ENSMUSG00000045471,MeanDecreaseGini,0.14857142857142858,7,15171,Hcrt,11,100651895,100653757,-1,protein_coding,hypocretin,6
+ENSMUSG00000028023,MeanDecreaseGini,0.10857142857142855,8,18741,Pitx2,3,128993527,129013240,1,protein_coding,paired-like homeodomain transcription factor 2,6
+ENSMUSG00000041046,MeanDecreaseGini,0.09714285714285714,9,56089,Ramp3,11,6608521,6627475,1,protein_coding,receptor (calcitonin) activity modifying protein 3,6
+ENSMUSG00000044988,MeanDecreaseGini,0.09142857142857144,10,83428,Ucn3,13,3990688,3995349,-1,protein_coding,urocortin 3,6
+ENSMUSG00000078689,MeanDecreaseGini,0.06857142857142856,11,620807,Mup6,4,59964294,60007274,1,protein_coding,major urinary protein 6,6
+ENSMUSG00000035383,MeanDecreaseGini,0.06285714285714285,12,110312,Pmch,10,87926934,87928237,1,protein_coding,pro-melanin-concentrating hormone,6
+ENSMUSG00000021948,MeanDecreaseGini,0.06285714285714285,13,18753,Prkcd,14,30317311,30348167,-1,protein_coding,"protein kinase C, delta",6
+ENSMUSG00000070570,MeanDecreaseGini,0.06285714285714285,14,72961,Slc17a7,7,44813373,44825566,1,protein_coding,"solute carrier family 17 (sodium-dependent inorganic phosphate cotransporter), member 7",6
+ENSMUSG00000035202,MeanDecreaseGini,0.06285714285714285,15,102436,Lars2,9,123195992,123291731,1,protein_coding,"leucyl-tRNA synthetase, mitochondrial",6
+ENSMUSG00000030905,MeanDecreaseGini,0.05714285714285713,16,12971,Crym,7,119785603,119801334,-1,protein_coding,"crystallin, mu",6
+ENSMUSG00000027985,MeanDecreaseGini,0.03428571428571429,17,16842,Lef1,3,130904120,131018005,1,protein_coding,lymphoid enhancer binding factor 1,6
+ENSMUSG00000032532,MeanDecreaseGini,0.03428571428571428,18,12424,Cck,9,121318890,121324760,-1,protein_coding,cholecystokinin,6
+ENSMUSG00000027301,MeanDecreaseGini,0.02857142857142856,19,18429,Oxt,2,130418093,130418974,1,protein_coding,oxytocin,6
+ENSMUSG00000029054,MeanDecreaseGini,0,20,14403,Gabrd,4,155469437,155482569,-1,protein_coding,"gamma-aminobutyric acid (GABA) A receptor, subunit delta",6
+ENSMUSG00000064179,MeanDecreaseGini,0,21,21955,Tnnt1,7,4507569,4519381,-1,protein_coding,"troponin T1, skeletal, slow",6
+ENSMUSG00000005892,MeanDecreaseGini,0,22,22044,Trh,6,92219042,92221631,-1,protein_coding,thyrotropin releasing hormone,6
+ENSMUSG00000026475,MeanDecreaseGini,0,23,19734,Rgs16,1,153616095,153621214,1,protein_coding,regulator of G-protein signaling 16,6
+ENSMUSG00000050315,MeanDecreaseGini,0,24,118449,Synpo2,3,122870168,123029798,-1,protein_coding,synaptopodin 2,6
+ENSMUSG00000038764,MeanDecreaseGini,0,25,545622,Ptpn3,4,57190841,57301837,-1,protein_coding,"protein tyrosine phosphatase, non-receptor type 3",6
+ENSMUSG00000049892,MeanDecreaseGini,0,26,19416,Rasd1,11,59854007,59855770,-1,protein_coding,"RAS, dexamethasone-induced 1",6
+ENSMUSG00000067724,MeanDecreaseGini,0.4,1,231044,Gbx1,5,24707755,24732200,-1,protein_coding,gastrulation brain homeobox 1,7
+ENSMUSG00000096225,MeanDecreaseGini,0.3942857142857143,2,16875,Lhx8,3,154011931,154036296,-1,protein_coding,LIM homeobox protein 8,7
+ENSMUSG00000005716,MeanDecreaseGini,0.39428571428571424,3,19293,Pvalb,15,78075314,78090600,-1,protein_coding,parvalbumin,7
+ENSMUSG00000022041,MeanDecreaseGini,0.28,4,110902,Chrna2,14,66372488,66390397,1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 2 (neuronal)",7
+ENSMUSG00000039714,MeanDecreaseGini,0.19428571428571428,5,235415,Cplx3,9,57507275,57513564,-1,protein_coding,complexin 3,7
+ENSMUSG00000028023,MeanDecreaseGini,0.1657142857142857,6,18741,Pitx2,3,128993527,129013240,1,protein_coding,paired-like homeodomain transcription factor 2,7
+ENSMUSG00000031491,MeanDecreaseGini,0.14285714285714285,7,11440,Chrna6,8,27893240,27903972,-1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 6",7
+ENSMUSG00000044988,MeanDecreaseGini,0.13714285714285712,8,83428,Ucn3,13,3990688,3995349,-1,protein_coding,urocortin 3,7
+ENSMUSG00000035383,MeanDecreaseGini,0.13142857142857142,9,110312,Pmch,10,87926934,87928237,1,protein_coding,pro-melanin-concentrating hormone,7
+ENSMUSG00000021948,MeanDecreaseGini,0.11999999999999998,10,18753,Prkcd,14,30317311,30348167,-1,protein_coding,"protein kinase C, delta",7
+ENSMUSG00000064179,MeanDecreaseGini,0.09714285714285714,11,21955,Tnnt1,7,4507569,4519381,-1,protein_coding,"troponin T1, skeletal, slow",7
+ENSMUSG00000027985,MeanDecreaseGini,0.07428571428571427,12,16842,Lef1,3,130904120,131018005,1,protein_coding,lymphoid enhancer binding factor 1,7
+ENSMUSG00000045471,MeanDecreaseGini,0.06857142857142856,13,15171,Hcrt,11,100651895,100653757,-1,protein_coding,hypocretin,7
+ENSMUSG00000029054,MeanDecreaseGini,0.06857142857142856,14,14403,Gabrd,4,155469437,155482569,-1,protein_coding,"gamma-aminobutyric acid (GABA) A receptor, subunit delta",7
+ENSMUSG00000041046,MeanDecreaseGini,0.06857142857142856,15,56089,Ramp3,11,6608521,6627475,1,protein_coding,receptor (calcitonin) activity modifying protein 3,7
+ENSMUSG00000070570,MeanDecreaseGini,0.06857142857142856,16,72961,Slc17a7,7,44813373,44825566,1,protein_coding,"solute carrier family 17 (sodium-dependent inorganic phosphate cotransporter), member 7",7
+ENSMUSG00000078689,MeanDecreaseGini,0.06285714285714285,17,620807,Mup6,4,59964294,60007274,1,protein_coding,major urinary protein 6,7
+ENSMUSG00000032532,MeanDecreaseGini,0.03428571428571429,18,12424,Cck,9,121318890,121324760,-1,protein_coding,cholecystokinin,7
+ENSMUSG00000030905,MeanDecreaseGini,0.03428571428571428,19,12971,Crym,7,119785603,119801334,-1,protein_coding,"crystallin, mu",7
+ENSMUSG00000035202,MeanDecreaseGini,0.03428571428571428,20,102436,Lars2,9,123195992,123291731,1,protein_coding,"leucyl-tRNA synthetase, mitochondrial",7
+ENSMUSG00000027301,MeanDecreaseGini,0.03428571428571428,21,18429,Oxt,2,130418093,130418974,1,protein_coding,oxytocin,7
+ENSMUSG00000026475,MeanDecreaseGini,0.03428571428571428,22,19734,Rgs16,1,153616095,153621214,1,protein_coding,regulator of G-protein signaling 16,7
+ENSMUSG00000005892,MeanDecreaseGini,0,23,22044,Trh,6,92219042,92221631,-1,protein_coding,thyrotropin releasing hormone,7
+ENSMUSG00000050315,MeanDecreaseGini,0,24,118449,Synpo2,3,122870168,123029798,-1,protein_coding,synaptopodin 2,7
+ENSMUSG00000038764,MeanDecreaseGini,0,25,545622,Ptpn3,4,57190841,57301837,-1,protein_coding,"protein tyrosine phosphatase, non-receptor type 3",7
+ENSMUSG00000049892,MeanDecreaseGini,0,26,19416,Rasd1,11,59854007,59855770,-1,protein_coding,"RAS, dexamethasone-induced 1",7
+ENSMUSG00000067724,MeanDecreaseGini,0.5142857142857142,1,231044,Gbx1,5,24707755,24732200,-1,protein_coding,gastrulation brain homeobox 1,8
+ENSMUSG00000096225,MeanDecreaseGini,0.42857142857142855,2,16875,Lhx8,3,154011931,154036296,-1,protein_coding,LIM homeobox protein 8,8
+ENSMUSG00000022041,MeanDecreaseGini,0.2971428571428571,3,110902,Chrna2,14,66372488,66390397,1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 2 (neuronal)",8
+ENSMUSG00000005716,MeanDecreaseGini,0.2628571428571428,4,19293,Pvalb,15,78075314,78090600,-1,protein_coding,parvalbumin,8
+ENSMUSG00000039714,MeanDecreaseGini,0.2457142857142857,5,235415,Cplx3,9,57507275,57513564,-1,protein_coding,complexin 3,8
+ENSMUSG00000021948,MeanDecreaseGini,0.1657142857142857,6,18753,Prkcd,14,30317311,30348167,-1,protein_coding,"protein kinase C, delta",8
+ENSMUSG00000041046,MeanDecreaseGini,0.14857142857142855,7,56089,Ramp3,11,6608521,6627475,1,protein_coding,receptor (calcitonin) activity modifying protein 3,8
+ENSMUSG00000035383,MeanDecreaseGini,0.13142857142857142,8,110312,Pmch,10,87926934,87928237,1,protein_coding,pro-melanin-concentrating hormone,8
+ENSMUSG00000044988,MeanDecreaseGini,0.1257142857142857,9,83428,Ucn3,13,3990688,3995349,-1,protein_coding,urocortin 3,8
+ENSMUSG00000031491,MeanDecreaseGini,0.12,10,11440,Chrna6,8,27893240,27903972,-1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 6",8
+ENSMUSG00000078689,MeanDecreaseGini,0.11428571428571428,11,620807,Mup6,4,59964294,60007274,1,protein_coding,major urinary protein 6,8
+ENSMUSG00000028023,MeanDecreaseGini,0.09714285714285714,12,18741,Pitx2,3,128993527,129013240,1,protein_coding,paired-like homeodomain transcription factor 2,8
+ENSMUSG00000045471,MeanDecreaseGini,0.09714285714285714,13,15171,Hcrt,11,100651895,100653757,-1,protein_coding,hypocretin,8
+ENSMUSG00000030905,MeanDecreaseGini,0.06857142857142856,14,12971,Crym,7,119785603,119801334,-1,protein_coding,"crystallin, mu",8
+ENSMUSG00000038764,MeanDecreaseGini,0.06285714285714286,15,545622,Ptpn3,4,57190841,57301837,-1,protein_coding,"protein tyrosine phosphatase, non-receptor type 3",8
+ENSMUSG00000026475,MeanDecreaseGini,0.04571428571428571,16,19734,Rgs16,1,153616095,153621214,1,protein_coding,regulator of G-protein signaling 16,8
+ENSMUSG00000029054,MeanDecreaseGini,0.03428571428571428,17,14403,Gabrd,4,155469437,155482569,-1,protein_coding,"gamma-aminobutyric acid (GABA) A receptor, subunit delta",8
+ENSMUSG00000064179,MeanDecreaseGini,0.03428571428571428,18,21955,Tnnt1,7,4507569,4519381,-1,protein_coding,"troponin T1, skeletal, slow",8
+ENSMUSG00000070570,MeanDecreaseGini,0.03428571428571428,19,72961,Slc17a7,7,44813373,44825566,1,protein_coding,"solute carrier family 17 (sodium-dependent inorganic phosphate cotransporter), member 7",8
+ENSMUSG00000005892,MeanDecreaseGini,0.02857142857142856,20,22044,Trh,6,92219042,92221631,-1,protein_coding,thyrotropin releasing hormone,8
+ENSMUSG00000035202,MeanDecreaseGini,0.01714285714285714,21,102436,Lars2,9,123195992,123291731,1,protein_coding,"leucyl-tRNA synthetase, mitochondrial",8
+ENSMUSG00000027301,MeanDecreaseGini,0,22,18429,Oxt,2,130418093,130418974,1,protein_coding,oxytocin,8
+ENSMUSG00000032532,MeanDecreaseGini,0,23,12424,Cck,9,121318890,121324760,-1,protein_coding,cholecystokinin,8
+ENSMUSG00000050315,MeanDecreaseGini,0,24,118449,Synpo2,3,122870168,123029798,-1,protein_coding,synaptopodin 2,8
+ENSMUSG00000027985,MeanDecreaseGini,0,25,16842,Lef1,3,130904120,131018005,1,protein_coding,lymphoid enhancer binding factor 1,8
+ENSMUSG00000049892,MeanDecreaseGini,0,26,19416,Rasd1,11,59854007,59855770,-1,protein_coding,"RAS, dexamethasone-induced 1",8
+ENSMUSG00000039714,MeanDecreaseGini,0.5257142857142857,1,235415,Cplx3,9,57507275,57513564,-1,protein_coding,complexin 3,9
+ENSMUSG00000022041,MeanDecreaseGini,0.36,2,110902,Chrna2,14,66372488,66390397,1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 2 (neuronal)",9
+ENSMUSG00000096225,MeanDecreaseGini,0.32,3,16875,Lhx8,3,154011931,154036296,-1,protein_coding,LIM homeobox protein 8,9
+ENSMUSG00000005716,MeanDecreaseGini,0.28,4,19293,Pvalb,15,78075314,78090600,-1,protein_coding,parvalbumin,9
+ENSMUSG00000067724,MeanDecreaseGini,0.22285714285714284,5,231044,Gbx1,5,24707755,24732200,-1,protein_coding,gastrulation brain homeobox 1,9
+ENSMUSG00000045471,MeanDecreaseGini,0.14285714285714285,6,15171,Hcrt,11,100651895,100653757,-1,protein_coding,hypocretin,9
+ENSMUSG00000021948,MeanDecreaseGini,0.13142857142857142,7,18753,Prkcd,14,30317311,30348167,-1,protein_coding,"protein kinase C, delta",9
+ENSMUSG00000044988,MeanDecreaseGini,0.13142857142857142,8,83428,Ucn3,13,3990688,3995349,-1,protein_coding,urocortin 3,9
+ENSMUSG00000035383,MeanDecreaseGini,0.12571428571428572,9,110312,Pmch,10,87926934,87928237,1,protein_coding,pro-melanin-concentrating hormone,9
+ENSMUSG00000041046,MeanDecreaseGini,0.12,10,56089,Ramp3,11,6608521,6627475,1,protein_coding,receptor (calcitonin) activity modifying protein 3,9
+ENSMUSG00000031491,MeanDecreaseGini,0.10285714285714284,11,11440,Chrna6,8,27893240,27903972,-1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 6",9
+ENSMUSG00000078689,MeanDecreaseGini,0.08571428571428572,12,620807,Mup6,4,59964294,60007274,1,protein_coding,major urinary protein 6,9
+ENSMUSG00000026475,MeanDecreaseGini,0.06285714285714285,13,19734,Rgs16,1,153616095,153621214,1,protein_coding,regulator of G-protein signaling 16,9
+ENSMUSG00000027301,MeanDecreaseGini,0.05142857142857142,14,18429,Oxt,2,130418093,130418974,1,protein_coding,oxytocin,9
+ENSMUSG00000049892,MeanDecreaseGini,0.05142857142857142,15,19416,Rasd1,11,59854007,59855770,-1,protein_coding,"RAS, dexamethasone-induced 1",9
+ENSMUSG00000028023,MeanDecreaseGini,0.03428571428571428,16,18741,Pitx2,3,128993527,129013240,1,protein_coding,paired-like homeodomain transcription factor 2,9
+ENSMUSG00000029054,MeanDecreaseGini,0.03428571428571428,17,14403,Gabrd,4,155469437,155482569,-1,protein_coding,"gamma-aminobutyric acid (GABA) A receptor, subunit delta",9
+ENSMUSG00000030905,MeanDecreaseGini,0.03428571428571428,18,12971,Crym,7,119785603,119801334,-1,protein_coding,"crystallin, mu",9
+ENSMUSG00000035202,MeanDecreaseGini,0.03428571428571428,19,102436,Lars2,9,123195992,123291731,1,protein_coding,"leucyl-tRNA synthetase, mitochondrial",9
+ENSMUSG00000032532,MeanDecreaseGini,0.03428571428571428,20,12424,Cck,9,121318890,121324760,-1,protein_coding,cholecystokinin,9
+ENSMUSG00000027985,MeanDecreaseGini,0.03428571428571428,21,16842,Lef1,3,130904120,131018005,1,protein_coding,lymphoid enhancer binding factor 1,9
+ENSMUSG00000064179,MeanDecreaseGini,0.02857142857142856,22,21955,Tnnt1,7,4507569,4519381,-1,protein_coding,"troponin T1, skeletal, slow",9
+ENSMUSG00000005892,MeanDecreaseGini,0.02857142857142856,23,22044,Trh,6,92219042,92221631,-1,protein_coding,thyrotropin releasing hormone,9
+ENSMUSG00000050315,MeanDecreaseGini,0.01714285714285714,24,118449,Synpo2,3,122870168,123029798,-1,protein_coding,synaptopodin 2,9
+ENSMUSG00000038764,MeanDecreaseGini,0.01714285714285714,25,545622,Ptpn3,4,57190841,57301837,-1,protein_coding,"protein tyrosine phosphatase, non-receptor type 3",9
+ENSMUSG00000070570,MeanDecreaseGini,0,26,72961,Slc17a7,7,44813373,44825566,1,protein_coding,"solute carrier family 17 (sodium-dependent inorganic phosphate cotransporter), member 7",9
+ENSMUSG00000039714,MeanDecreaseGini,0.5714285714285713,1,235415,Cplx3,9,57507275,57513564,-1,protein_coding,complexin 3,10
+ENSMUSG00000022041,MeanDecreaseGini,0.4742857142857143,2,110902,Chrna2,14,66372488,66390397,1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 2 (neuronal)",10
+ENSMUSG00000096225,MeanDecreaseGini,0.4057142857142857,3,16875,Lhx8,3,154011931,154036296,-1,protein_coding,LIM homeobox protein 8,10
+ENSMUSG00000067724,MeanDecreaseGini,0.2457142857142857,4,231044,Gbx1,5,24707755,24732200,-1,protein_coding,gastrulation brain homeobox 1,10
+ENSMUSG00000005716,MeanDecreaseGini,0.23428571428571424,5,19293,Pvalb,15,78075314,78090600,-1,protein_coding,parvalbumin,10
+ENSMUSG00000041046,MeanDecreaseGini,0.13142857142857142,6,56089,Ramp3,11,6608521,6627475,1,protein_coding,receptor (calcitonin) activity modifying protein 3,10
+ENSMUSG00000035383,MeanDecreaseGini,0.12,7,110312,Pmch,10,87926934,87928237,1,protein_coding,pro-melanin-concentrating hormone,10
+ENSMUSG00000064179,MeanDecreaseGini,0.10285714285714284,8,21955,Tnnt1,7,4507569,4519381,-1,protein_coding,"troponin T1, skeletal, slow",10
+ENSMUSG00000050315,MeanDecreaseGini,0.10285714285714284,9,118449,Synpo2,3,122870168,123029798,-1,protein_coding,synaptopodin 2,10
+ENSMUSG00000045471,MeanDecreaseGini,0.09714285714285714,10,15171,Hcrt,11,100651895,100653757,-1,protein_coding,hypocretin,10
+ENSMUSG00000021948,MeanDecreaseGini,0.09714285714285714,11,18753,Prkcd,14,30317311,30348167,-1,protein_coding,"protein kinase C, delta",10
+ENSMUSG00000078689,MeanDecreaseGini,0.07428571428571427,12,620807,Mup6,4,59964294,60007274,1,protein_coding,major urinary protein 6,10
+ENSMUSG00000031491,MeanDecreaseGini,0.06857142857142856,13,11440,Chrna6,8,27893240,27903972,-1,protein_coding,"cholinergic receptor, nicotinic, alpha polypeptide 6",10
+ENSMUSG00000030905,MeanDecreaseGini,0.06285714285714285,14,12971,Crym,7,119785603,119801334,-1,protein_coding,"crystallin, mu",10
+ENSMUSG00000044988,MeanDecreaseGini,0.05142857142857142,15,83428,Ucn3,13,3990688,3995349,-1,protein_coding,urocortin 3,10
+ENSMUSG00000028023,MeanDecreaseGini,0.03428571428571429,16,18741,Pitx2,3,128993527,129013240,1,protein_coding,paired-like homeodomain transcription factor 2,10
+ENSMUSG00000070570,MeanDecreaseGini,0.03428571428571428,17,72961,Slc17a7,7,44813373,44825566,1,protein_coding,"solute carrier family 17 (sodium-dependent inorganic phosphate cotransporter), member 7",10
+ENSMUSG00000032532,MeanDecreaseGini,0.03428571428571428,18,12424,Cck,9,121318890,121324760,-1,protein_coding,cholecystokinin,10
+ENSMUSG00000026475,MeanDecreaseGini,0.03428571428571428,19,19734,Rgs16,1,153616095,153621214,1,protein_coding,regulator of G-protein signaling 16,10
+ENSMUSG00000049892,MeanDecreaseGini,0.03428571428571428,20,19416,Rasd1,11,59854007,59855770,-1,protein_coding,"RAS, dexamethasone-induced 1",10
+ENSMUSG00000027985,MeanDecreaseGini,0.01714285714285714,21,16842,Lef1,3,130904120,131018005,1,protein_coding,lymphoid enhancer binding factor 1,10
+ENSMUSG00000029054,MeanDecreaseGini,0,22,14403,Gabrd,4,155469437,155482569,-1,protein_coding,"gamma-aminobutyric acid (GABA) A receptor, subunit delta",10
+ENSMUSG00000035202,MeanDecreaseGini,0,23,102436,Lars2,9,123195992,123291731,1,protein_coding,"leucyl-tRNA synthetase, mitochondrial",10
+ENSMUSG00000027301,MeanDecreaseGini,0,24,18429,Oxt,2,130418093,130418974,1,protein_coding,oxytocin,10
+ENSMUSG00000005892,MeanDecreaseGini,0,25,22044,Trh,6,92219042,92221631,-1,protein_coding,thyrotropin releasing hormone,10
+ENSMUSG00000038764,MeanDecreaseGini,0,26,545622,Ptpn3,4,57190841,57301837,-1,protein_coding,"protein tyrosine phosphatase, non-receptor type 3",10
