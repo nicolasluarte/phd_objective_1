@@ -389,7 +389,7 @@ alpha_q0_emtrend
 broom::tidy(alpha_q0_emtrend$emtrends, conf.int=TRUE)
 broom::tidy(alpha_q0_emtrend$contrasts, conf.int=TRUE)
 
-## RNA-seq ----
+### RNA-seq ----
 rnaseq_rank <- read_csv("../datasets/rna-seq/data_rank.csv")
 rnaseq_pdp <- read_csv("../datasets/rna-seq/data_rank_pdp.csv")
 
@@ -426,6 +426,232 @@ pdp_slopes <- rnaseq_pdp %>%
             mutate(gene=X$symbol[1])
     })
 pdp_slopes
+
+### Clarity ----
+
+clarity_zpos <- read_csv("../datasets/clarity/z_pos_readings.csv")
+
+neuron_reading <- clarity_zpos %>%
+    filter(predictions == "neuron") %>% 
+    mutate(
+        pos_z_lim = scales::rescale(pos_z, to = c(0, 1))
+    ) %>% 
+    group_by(animal_id, filename) %>% 
+    mutate(
+        rel_distance = pos_z - min(pos_z),
+        scaled_rel_distance = scale(rel_distance),
+        scaled_int = scale(mean_intensity),
+        mean_int_rel = mean_intensity / max(mean_intensity),
+        integrated_in = mean_intensity*Area/max(mean_intensity*Area)
+    )
+
+# null model
+clarity_mdl0 <- lme4::lmer(
+    data = neuron_reading,
+    mean_int_rel ~ 1 + (1|animal_id),
+    REML = TRUE,
+    control = lme4::lmerControl(
+        optimizer = "bobyqa",
+        optCtrl = list(maxfun = 2e5)
+    )
+)
+# null model with all random effects
+clarity_mdl1 <- lme4::lmer(
+    data = neuron_reading,
+    mean_int_rel ~ 1 + (pos_z_lim|animal_id),
+    REML = TRUE,
+    control = lme4::lmerControl(
+        optimizer = "bobyqa",
+        optCtrl = list(maxfun = 2e5)
+    )
+)
+# base model
+clarity_mdl2 <- lme4::lmer(
+    data = neuron_reading,
+    mean_int_rel ~ pos_z_lim * group + (pos_z_lim|animal_id),
+    REML = TRUE,
+    control = lme4::lmerControl(
+        optimizer = "bobyqa",
+        optCtrl = list(maxfun = 2e5)
+    )
+)
+# adding squared term
+clarity_mdl3 <- lme4::lmer(
+    data = neuron_reading,
+    mean_int_rel ~ pos_z_lim * I(pos_z_lim^2) * group + (pos_z_lim|animal_id),
+    REML = TRUE,
+    control = lme4::lmerControl(
+        optimizer = "bobyqa",
+        optCtrl = list(maxfun = 2e5)
+    )
+)
+# complete model
+clarity_mdl4 <- lme4::lmer(
+    data = neuron_reading,
+    mean_int_rel ~ pos_z_lim * I(pos_z_lim^2) * group + (pos_z_lim|filename) + (pos_z_lim|animal_id),
+    REML = TRUE,
+    control = lme4::lmerControl(
+        optimizer = "bobyqa",
+        optCtrl = list(maxfun = 2e5)
+    )
+)
+# complete model cubed term
+clarity_mdl5 <- lme4::lmer(
+    data = neuron_reading,
+    mean_int_rel ~ pos_z_lim * I(pos_z_lim^3) * group + (pos_z_lim|filename) + (pos_z_lim|animal_id),
+    REML = TRUE,
+    control = lme4::lmerControl(
+        optimizer = "bobyqa",
+        optCtrl = list(maxfun = 2e5)
+    )
+)
+
+# compare models with AIC
+clarity_mdl_AIC <- AIC(
+    clarity_mdl0,
+    clarity_mdl1,
+    clarity_mdl2,
+    clarity_mdl3,
+    clarity_mdl4,
+    clarity_mdl5
+)
+clarity_mdl_AIC
+
+# with f-test
+anova(clarity_mdl0, clarity_mdl1)
+anova(clarity_mdl1, clarity_mdl2)
+anova(clarity_mdl2, clarity_mdl3)
+anova(clarity_mdl3, clarity_mdl4)
+anova(clarity_mdl4, clarity_mdl5)
+
+# fit best model
+clarity_mdl_opt <- lme4::lmer(
+    data = neuron_reading,
+    mean_int_rel ~ pos_z_lim * I(pos_z_lim^2) * group + (pos_z_lim|filename) + (pos_z_lim|animal_id),
+    control = lme4::lmerControl(
+        optimizer = "bobyqa",
+        optCtrl = list(maxfun = 2e5)
+    )
+)
+
+clarity_emm <- emmeans::emmeans(
+    clarity_mdl_opt,
+    revpairwise ~ group | pos_z_lim * I(pos_z_lim^2),
+    at = list(pos_z_lim = seq(0, 1, 0.05))
+)
+clarity_emm
+
+clarity_anterior_posterior <- emmeans::emmeans(
+    clarity_mdl_opt,
+    revpairwise ~ pos_z_lim * I(pos_z_lim^2) * group,
+    at = list(pos_z_lim = c(0.2715, 0.539)) # 1st and 3rd quartile
+)$contrasts %>% broom.mixed::tidy(conf.int = TRUE)
+clarity_anterior_posterior
+
+
+clarity_anterior_posterior_emm <- emmeans::emmeans(
+    clarity_mdl_opt,
+    revpairwise ~ group * pos_z_lim * I(pos_z_lim^2),
+    at = list(pos_z_lim = c(0.2715, 0.539)) # 1st and 3rd quartile
+)$contrasts %>% broom.mixed::tidy(conf.int = TRUE)
+clarity_anterior_posterior_emm
+
+clarity_emtrend <- emmeans::emtrends(
+    clarity_mdl_opt,
+    revpairwise ~ group | pos_z_lim * I(pos_z_lim^2),
+    var = "pos_z_lim",
+    at = list(pos_z_lim = seq(0, 1, 0.01))
+)
+clarity_emtrend
+
+clarity_emtrend_q <- emmeans::emtrends(
+    clarity_mdl_opt,
+    revpairwise ~ group | pos_z_lim * I(pos_z_lim^2),
+    var = "pos_z_lim",
+    at = list(pos_z_lim = summary(neuron_reading$pos_z_lim)[c(2,3,5)])
+)$contrasts %>% broom.mixed::tidy(conf.int = TRUE)
+clarity_emtrend_q
+
+clarity_emtrend_ov <- emmeans::emtrends(
+    clarity_mdl_opt,
+    revpairwise ~ group | pos_z_lim * I(pos_z_lim^2),
+    var = "pos_z_lim"
+)
+clarity_emtrend_ov
+
+## p::clarity slopes
+
+clarityp1 <- clarity_emtrend$emtrends %>% 
+    broom.mixed::tidy(conf.int = TRUE) %>% 
+    ggplot(aes(
+        pos_z_lim, pos_z_lim.trend
+    )) +
+    geom_ribbon(aes(
+        ymin = conf.low,
+        ymax = conf.high,
+        fill = group
+    ), alpha = 0.25) +
+    geom_line(aes(color = group)) +
+    scale_x_continuous(breaks = seq(0, 1, 0.1)) +
+    theme_uncertainty + 
+    scale_y_continuous(breaks = seq(-3,2.5,0.5), 
+                       limits = c(-3, 2.5), 
+                       expand = c(0,0)) +
+    ylab(latex2exp::TeX(r"($\hat{\beta_}_{oxa \ intensity}$)")) +
+    xlab(latex2exp::TeX(r"($Anterior \rightarrow \ Posterior$)")) +
+    scale_fill_manual(values = c("black", "orange")) +
+    scale_color_manual(values = c("black", "orange")) 
+clarityp1
+
+clarityp2 <- clarity_emm$emmeans %>% 
+    broom.mixed::tidy(conf.int = TRUE) %>% 
+    ggplot(aes(
+        pos_z_lim, estimate
+    )) +
+    geom_point(
+        data = sample_n(neuron_reading, size = 100),
+        aes(pos_z_lim, mean_int_rel, fill = group),
+        alpha = 0.5,
+        size = 1.5
+    ) +
+    geom_ribbon(aes(
+        ymin = conf.low,
+        ymax = conf.high,
+        fill = group
+    ), alpha = 0.25) +
+    geom_line(aes(color = group)) +
+    scale_x_continuous(breaks = seq(0, 1, 0.1)) +
+    theme_uncertainty + 
+    scale_y_continuous(breaks = seq(0,1.4,0.2), 
+                       limits = c(0, 1.4), 
+                       expand = c(0,0)) +
+    ylab(latex2exp::TeX(r"($\hat{\mu_}_{oxa \ intensity}$)")) +
+    xlab(latex2exp::TeX(r"($Anterior \rightarrow \ Posterior$)")) +
+    scale_fill_manual(values = c("black", "orange")) +
+    scale_color_manual(values = c("black", "orange")) 
+clarityp2
+
+clarityp3 <- clarity_anterior_posterior_emm %>% 
+    slice(c(2,5)) %>% 
+    ggplot(aes(
+        contrast, estimate
+    )) +
+    geom_pointrange(aes(ymin=conf.low, ymax=conf.high)) +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+    theme_uncertainty + 
+    scale_y_continuous(breaks = seq(-0.2,0.4,0.1), 
+                       limits = c(-0.2, 0.4), 
+                       expand = c(0,0)) +
+    scale_x_discrete(labels = c(
+        "LU",
+        "HU"
+        )) +
+    ylab(latex2exp::TeX(r"($\hat{\mu_}_{posterior - anterior}$)")) +
+    xlab("") +
+    scale_fill_manual(values = c("black", "orange")) +
+    scale_color_manual(values = c("black", "orange")) 
+clarityp3
+
 
 
 ## p::metabolic efficiency ----
