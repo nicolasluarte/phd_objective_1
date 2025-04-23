@@ -20,8 +20,7 @@ boxplot_sig_bracket <- function(group1, group2){
     ggsignif::geom_signif(
         comparisons = list(c(group1, group2)),
         map_signif_level = TRUE,
-        textsize = 0,
-        tip_length = 0
+        textsize = 0
     )
 }
 
@@ -34,7 +33,7 @@ wd <- read_csv("../datasets/weights/weights.csv") %>%
     )
 
 # same but weekly aggregate
-wd_weekly <- wd %>% 
+weekly_weight <- wd %>% 
     ungroup() %>% 
     group_by(ID) %>% 
     mutate(
@@ -83,13 +82,13 @@ w_mdl1_trend$emtrends %>% broom.mixed::tidy(., conf.int=TRUE)
 
 
 
-## p:weekly weight ----
+## p::weekly weight ----
 wp1 <- weekly_weight %>% 
     filter(week <= 10) %>% 
     ggplot(aes(
         week, rel_weight, group = ID
     )) +
-    geom_vline(xintercept = 2.5, alpha = 0.5) +
+    geom_vline(xintercept = 2.5, linetype = "dashed") +
     geom_line(alpha = 0.25, aes(color = group))  +
     stat_summary(
         fun.data = "mean_se",
@@ -112,7 +111,7 @@ wp1 <- weekly_weight %>%
     scale_color_manual(values = c("black", "orange")) 
 wp1
 
-## p:weight @ week10 ----
+## p::weight @ week10 ----
 wp2 <- weekly_weight %>% 
     filter(week==10) %>% 
     ggplot(aes(
@@ -120,7 +119,11 @@ wp2 <- weekly_weight %>%
     )) +
     geom_boxplot(outlier.shape = NA, width=0.5, aes(color=group)) +
     geom_point(aes(fill=group), color="black") +
-    boxplot_sig_bracket(1,2) +
+    ggsignif::geom_signif(
+        comparisons = list(c(1,2)),
+        textsize = 0,
+        y_position = 32
+    ) +
     theme_uncertainty + 
     scale_x_discrete(labels = c("Ctrl", "Unc")) +
     scale_y_continuous(breaks = seq(20,35,5), 
@@ -148,7 +151,7 @@ wp3 <- w_mdl1_trend$emtrends %>%
     scale_y_continuous(breaks = seq(0,0.6,0.1), 
                        limits = c(0,0.6), 
                        expand = c(0,0)) +
-    ylab(latex2exp::TeX(r"($\beta_{weight/weeks}$)")) +
+    ylab(latex2exp::TeX(r"($\hat{\mu}_{weight/weeks}$)")) +
     xlab("")
 wp3
 
@@ -244,14 +247,16 @@ frd <- read_csv("../datasets/behavioral-tests/boops.csv") %>%
         rel_date = as.numeric(date - min(date))
     )
 
-frd_mdl <- lme4::glmer.nb(
-    data = frd,
-    failed_retrievals ~ group * rel_date * experimental_phase + (rel_date|ID),
-    control = lme4::glmerControl(
-        optimizer = "bobyqa",
-        optCtrl = list(maxfun = 2e5)
-    )
-)
+# this model takes a lot of time so I saved it in rds format
+#frd_mdl <- lme4::glmer.nb(
+#    data = frd,
+#    failed_retrievals ~ group * rel_date * experimental_phase + (rel_date|ID),
+#    control = lme4::glmerControl(
+#        optimizer = "bobyqa",
+#        optCtrl = list(maxfun = 2e5)
+#    )
+#)
+frd_mdl <- read_rds("../datasets/frd_mdl.rds")
 summary(frd_mdl)
 
 frd_emm <- emmeans::emmeans(
@@ -296,13 +301,13 @@ summary(rld_mdl)
 
 rld_emm <- emmeans::emmeans(
     rld_mdl,
-    pairwise ~ group | experimental_phase * rel_date,
+    revpairwise ~ group | experimental_phase * rel_date,
     at = list(experimental_phase=c("Experimental"), rel_date=c(56)),
     type = "response"
 )
 rld_emm
 broom.mixed::tidy(rld_emm$emmeans, conf.int=TRUE)
-broom.mixed::tidy(emmeans::contrast(rld_emm, "revpairwise"), conf.int=TRUE)
+broom.mixed::tidy(rld_emm$contrasts, conf.int = TRUE)
 
 rld_emm_trend <- emmeans::emtrends(
     rld_mdl,
@@ -316,6 +321,17 @@ broom.mixed::tidy(rld_emm_trend$emtrends, conf.int=TRUE)
 broom.mixed::tidy(rld_emm_trend$contrasts, conf.int=TRUE)
 
 ### demand curve ----
+devtools::source_url("https://github.com/lab-cpl/lickometer-library/blob/main/src/lickometer_functions_compilate.R?raw=TRUE")
+
+lickometer_data <- load_experiment(
+    metadataFileName = "../datasets/lickometer/metadata/lickometer_metadata.csv",
+    data_directory_path = "../datasets/lickometer/raw"
+)
+
+write_csv(x = lickometer_data, file = "../datasets/behavioral-tests/lickometer_dc.csv")
+
+
+
 alphaq0d <- read_csv("../datasets/behavioral-tests/alpha_q0.csv")
 dcd <- read_csv("../datasets/behavioral-tests/demand_curve_data.csv")
 
@@ -418,13 +434,23 @@ ip1 <- HU_vs_LU_mdl %>%
     ggplot(aes(
         rel_date, resid_hu
     )) +
-    geom_line(aes(group=ID), alpha=0.5) +
-    geom_point(color="black", fill="orange") +
-    geom_hline(yintercept = 0, color="gray") +
+    stat_summary(
+        fun.data = "mean_se",
+        geom = "ribbon",
+        aes(group = 1),
+        fill = "orange"
+    ) +
+    stat_summary(
+        fun.data = "mean_se",
+        geom = "line",
+        aes(group = 1)
+    ) +
+    geom_line(aes(group=ID), alpha=0.25) +
+    geom_hline(yintercept = 0, color="black", linetype = "dashed") +
     scale_x_continuous(breaks = seq(0, 56, 7)) +
     theme_uncertainty + 
-    scale_y_continuous(breaks = seq(-10,2, 2), 
-                       limits = c(-10,2), 
+    scale_y_continuous(breaks = seq(-10,4, 2), 
+                       limits = c(-10,4), 
                        expand = c(0,0)) +
     ylab(latex2exp::TeX(r"($HU_{\Delta wt./\Delta int.} - LU_{\Delta wt./\Delta int.}$)")) +
     xlab("Days")
@@ -438,7 +464,7 @@ ip2 <-id_wd %>%
     ggplot(aes(
         weeks, intake, group = ID
     )) +
-    geom_vline(xintercept = 2.5, alpha = 0.5) +
+    geom_vline(xintercept = 2.5, linetype = "dashed") +
     stat_summary(
         fun.data = "mean_se",
         geom = "point",
@@ -477,7 +503,11 @@ ip3 <- id_wd %>%
     )) + 
     geom_boxplot(outlier.shape = NA, width=0.5, aes(color=group)) +
     geom_point(aes(fill=group), color="black") +
-    boxplot_sig_bracket(1,2) +
+    ggsignif::geom_signif(
+        comparisons = list(c(1,2)),
+        textsize = 0,
+        y_position = 87
+    ) +
     theme_uncertainty + 
     scale_x_discrete(labels = c("Ctrl", "Unc")) +
     scale_y_continuous(breaks = seq(0,100,10), 
@@ -502,7 +532,11 @@ frp1 <- broom.mixed::tidy(frd_emm$emmeans, conf.int=TRUE) %>%
         data=frd %>% 
                      group_by(ID, group) %>% 
                      summarise(response=mean(failed_retrievals))) +
-    boxplot_sig_bracket(1,2) +
+    ggsignif::geom_signif(
+        comparisons = list(c(1,2)),
+        textsize = 0,
+        y_position = 19
+    ) +
     theme_uncertainty + 
     scale_x_discrete(labels = c("Ctrl", "Unc")) +
     scale_y_continuous(breaks = seq(0,20,5), 
@@ -527,7 +561,11 @@ rlp1 <- broom.mixed::tidy(rld_emm$emmeans, conf.int=TRUE) %>%
                    summarise(ret=mean(ret)),
                aes(group, ret, fill=group),
                  color="black",alpha=0.25) +
-    boxplot_sig_bracket(1,2)+
+    ggsignif::geom_signif(
+        comparisons = list(c(1,2)),
+        textsize = 0,
+        y_position = 460
+    ) +
     theme_uncertainty + 
     scale_x_discrete(labels = c("Ctrl", "Unc")) +
     scale_y_continuous(breaks = seq(0,500, 100), 
@@ -585,7 +623,10 @@ alphaq0p1 <- alphaq0d %>%
     )) +
     geom_boxplot(outlier.shape = NA, width = 0.5, aes(color=group)) +
     geom_point(size = 5, shape = 21, aes(fill=group), color = "black", alpha=0.5) +
-    boxplot_sig_bracket(1, 2) +
+    ggsignif::geom_signif(
+        comparisons = list(c(1,2)),
+        textsize = 0
+    ) +
     scale_y_continuous(transform = "log",
                        limits = c(exp(1)^-9, exp(1)^-6),
                        expand = c(0,0),
@@ -609,7 +650,11 @@ alphaq0p2 <- alphaq0d %>%
     )) +
     geom_boxplot(outlier.shape = NA, width = 0.5, aes(color=group)) +
     geom_point(size = 5, shape = 21, aes(fill=group), color = "black", alpha=0.5) +
-    boxplot_sig_bracket(1, 2) +
+    ggsignif::geom_signif(
+        comparisons = list(c(1,2)),
+        textsize = 0,
+        y_position = 25
+    ) +
     scale_y_continuous(breaks = seq(0,30, 5), 
                        limits = c(0,30), 
                        expand = c(0,0)) +
@@ -635,7 +680,7 @@ alphaq0p3 <- broom::tidy(alpha_q0_emtrend$emtrends, conf.int=TRUE) %>%
     scale_x_discrete(labels = c("Ctrl", "Unc")) +
     ggpubr::theme_pubr() +
     theme_uncertainty +
-    ylab(latex2exp::TeX(r"($\beta_{\frac{\Delta Q_{0}}{\Delta \alpha}}$)")) +
+    ylab(latex2exp::TeX(r"($\hat{\mu}_{\frac{\Delta Q_{0}}{\Delta \alpha}}$)")) +
     xlab(" ") +
     scale_color_manual(values = c("black", "orange")) +
     scale_fill_manual(values = c("black", "orange"))
@@ -666,12 +711,12 @@ rnap2 <- pdp_slopes %>%
         gene, estimate
     )) +
     geom_pointrange(aes(ymin=conf.low, ymax=conf.high), color="black", shape=21) +
-    geom_hline(yintercept = 0, color = "gray") +
+    geom_hline(yintercept = 0, linetype="dashed") +
     scale_y_continuous(breaks = seq(-0.05,0.02,0.01), 
                        limits = c(-0.05,0.02), 
                        expand = c(0,0)) +
     xlab("") +
-    ylab(latex2exp::TeX(r"($\beta_{\frac{\Delta Pr(Group = HU)}{\Delta Gene \ expression}}$)")) +
+    ylab(latex2exp::TeX(r"($\hat{\mu}_{\frac{\Delta Pr(Group = HU)}{\Delta Gene \ expression}}$)")) +
     theme_uncertainty
 rnap2
 
