@@ -2,7 +2,8 @@
 pacman::p_load(
     tidyverse,
     ggplot2,
-    patchwork
+    patchwork,
+    robustlmm
 )
 setwd(this.path::here())
 
@@ -429,7 +430,22 @@ pdp_slopes
 
 ### Clarity ----
 
+#### intensity ----
+
 clarity_zpos <- read_csv("../datasets/clarity/z_pos_readings.csv")
+
+all_neuron_reading <- clarity_zpos %>%
+    mutate(
+        pos_z_lim = scales::rescale(pos_z, to = c(0, 1))
+    ) %>% 
+    group_by(animal_id, filename) %>% 
+    mutate(
+        rel_distance = pos_z - min(pos_z),
+        scaled_rel_distance = scale(rel_distance),
+        scaled_int = scale(mean_intensity),
+        mean_int_rel = mean_intensity / max(mean_intensity),
+        integrated_in = mean_intensity*Area/max(mean_intensity*Area)
+    )
 
 neuron_reading <- clarity_zpos %>%
     filter(predictions == "neuron") %>% 
@@ -579,7 +595,97 @@ clarity_emtrend_ov <- emmeans::emtrends(
 )
 clarity_emtrend_ov
 
-## p::clarity slopes
+#### counts ----
+
+total_counts <- neuron_reading %>% 
+    group_by(animal_id, group) %>% 
+    summarise(
+        oxa_count = n()
+    ) 
+
+mean_position <- neuron_reading %>% 
+    mutate(
+        hem = str_extract(filename, pattern = "(izq|der)")
+    )
+
+pos_mdl <- lme4::lmer(
+    data = mean_position,
+    pos_z_lim ~ group + mean_int_rel + (1|animal_id),
+    control = lme4::lmerControl(
+        optimizer = "bobyqa",
+        optCtrl = list(maxfun = 2e5)
+    )
+)
+summary(pos_mdl)
+
+pos_emm <- emmeans::emmeans(
+    pos_mdl,
+    revpairwise ~ group + mean_int_rel,
+    type = "response"
+)
+pos_emm
+
+pos_emm_p <- broom.mixed::tidy(pos_emm$emmeans, conf.int = TRUE)
+
+
+## p::clarity total counts ----
+
+clarityp4 <- total_counts %>% 
+    ggplot(aes(
+        group, oxa_count
+    )) +
+    geom_boxplot(outlier.shape = NA, aes(color = group), width = 0.5) + 
+    geom_point(aes(fill = group)) +
+    scale_x_discrete(labels = c("LU", "HU")) +
+    theme_uncertainty + 
+    scale_fill_manual(values = c("black", "orange")) +
+    scale_color_manual(values = c("black", "orange"))  +
+    scale_y_continuous(breaks = seq(1500, 3000, 500), 
+                       limits = c(1500, 3000), 
+                       expand = c(0,0)) +
+    xlab("") +
+    ylab(latex2exp::TeX(r"($OXA^{+} counts$)"))
+clarityp4
+
+## p::clarity count distribution ----
+
+clarityp5 <- neuron_reading %>% 
+    ggplot(aes(
+        pos_z_lim
+    )) +
+    geom_density(aes(color = group, fill = group), linewidth = 1, alpha = 0.1) +
+    geom_vline(xintercept = 0.356, linetype = "dashed", color = "black") +
+    geom_vline(xintercept = 0.481, linetype = "dashed", color = "orange") +
+    geom_point(
+        data = pos_emm_p,
+        inherit.aes = FALSE,
+        aes(x = estimate, y = 2.25, fill = group)
+    ) +
+    geom_errorbarh(
+        data = pos_emm_p,
+        inherit.aes = FALSE,
+        aes(y = 2.25, xmin = conf.low, xmax = conf.high,
+            color = group),
+        height = 0.25,
+        linewidth = 1.5
+    ) +
+    geom_segment(aes(x = 0.356, y = 2.425, xend = 0.481, yend = 2.425),
+                 inherit.aes = FALSE) +
+    theme_uncertainty + 
+    scale_fill_manual(values = c("black", "orange")) +
+    scale_color_manual(values = c("black", "orange")) +
+    xlab(latex2exp::TeX(r"($Anterior \rightarrow \ Posterior$)")) +
+    ylab(latex2exp::TeX(r"($OXA^{+} counts \ density$)")) +
+    scale_y_continuous(breaks = seq(0, 2.5, 0.5), 
+                       limits = c(0, 2.5), 
+                       expand = c(0,0)) +
+    scale_x_continuous(breaks = seq(0, 1, 0.25), 
+                       limits = c(0, 1), 
+                       expand = c(0,0)) 
+clarityp5
+
+
+## p::clarity slopes ----
 
 clarityp1 <- clarity_emtrend$emtrends %>% 
     broom.mixed::tidy(conf.int = TRUE) %>% 
@@ -620,6 +726,8 @@ clarityp2 <- clarity_emm$emmeans %>%
         fill = group
     ), alpha = 0.25) +
     geom_line(aes(color = group)) +
+    geom_vline(xintercept = summary(neuron_reading$pos_z_lim)[c(2, 5)],
+               linetype = "dashed") +
     scale_x_continuous(breaks = seq(0, 1, 0.1)) +
     theme_uncertainty + 
     scale_y_continuous(breaks = seq(0,1.4,0.2), 
@@ -975,4 +1083,6 @@ rnap3
 
 (rnap3 + rnap2 + rnap1) +
     plot_annotation(tag_levels = c("A"))
+
+(clarityp2 | clarityp3 / clarityp1)
 
