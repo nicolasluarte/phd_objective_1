@@ -3,7 +3,11 @@ pacman::p_load(
     tidyverse,
     ggplot2,
     patchwork,
-    robustlmm
+    robustlmm,
+    magick,
+    figpatch,
+    DiagrammeR,
+    ggforce
 )
 setwd(this.path::here())
 
@@ -130,7 +134,7 @@ wp2 <- weekly_weight %>%
         y_position = 32
     ) +
     theme_uncertainty +
-    scale_x_discrete(labels = c("Ctrl", "Unc")) +
+    scale_x_discrete(labels = c("LU", "HU")) +
     scale_y_continuous(
         breaks = seq(20, 35, 5),
         limits = c(20, 35),
@@ -155,7 +159,7 @@ wp3 <- w_mdl1_trend$emtrends %>%
     scale_fill_manual(values = c("black", "orange")) +
     scale_color_manual(values = c("black", "orange")) +
     theme_uncertainty +
-    scale_x_discrete(labels = c("Ctrl", "Unc")) +
+    scale_x_discrete(labels = c("LU", "HU")) +
     scale_y_continuous(
         breaks = seq(0, 0.6, 0.1),
         limits = c(0, 0.6),
@@ -904,7 +908,7 @@ ip3 <- id_wd %>%
         y_position = 87
     ) +
     theme_uncertainty +
-    scale_x_discrete(labels = c("Ctrl", "Unc")) +
+    scale_x_discrete(labels = c("LU", "HU")) +
     scale_y_continuous(
         breaks = seq(0, 100, 10),
         limits = c(0, 100),
@@ -936,7 +940,7 @@ frp1 <- broom.mixed::tidy(frd_emm$emmeans, conf.int = TRUE) %>%
         y_position = 19
     ) +
     theme_uncertainty +
-    scale_x_discrete(labels = c("Ctrl", "Unc")) +
+    scale_x_discrete(labels = c("LU", "HU")) +
     scale_y_continuous(
         breaks = seq(0, 20, 5),
         limits = c(0, 20),
@@ -969,7 +973,7 @@ rlp1 <- broom.mixed::tidy(rld_emm$emmeans, conf.int = TRUE) %>%
         y_position = 460
     ) +
     theme_uncertainty +
-    scale_x_discrete(labels = c("Ctrl", "Unc")) +
+    scale_x_discrete(labels = c("LU", "HU")) +
     scale_y_continuous(
         breaks = seq(0, 500, 100),
         limits = c(0, 500),
@@ -1012,7 +1016,7 @@ dcp1 <- dcd %>%
     ) +
     scale_y_continuous(
         transform = "log",
-        limits = c(exp(1)^0.1, exp(1)^3),
+        limits = c(exp(1)^-0.5, exp(1)^3),
         expand = c(0, 0),
         breaks = scales::trans_breaks("log", function(x) exp(1)^x),
         labels = scales::trans_format("log", scales::math_format(e^.x))
@@ -1043,7 +1047,7 @@ alphaq0p1 <- alphaq0d %>%
         breaks = scales::trans_breaks("log", function(x) exp(1)^x),
         labels = scales::trans_format("log", scales::math_format(e^.x))
     ) +
-    scale_x_discrete(labels = c("Ctrl", "Unc")) +
+    scale_x_discrete(labels = c("LU", "HU")) +
     annotation_logticks() +
     ggpubr::theme_pubr() +
     theme_uncertainty +
@@ -1071,7 +1075,7 @@ alphaq0p2 <- alphaq0d %>%
         limits = c(0, 30),
         expand = c(0, 0)
     ) +
-    scale_x_discrete(labels = c("Ctrl", "Unc")) +
+    scale_x_discrete(labels = c("LU", "HU")) +
     ggpubr::theme_pubr() +
     theme_uncertainty +
     ylab(latex2exp::TeX(r"($Q_{0}$)")) +
@@ -1080,7 +1084,52 @@ alphaq0p2 <- alphaq0d %>%
     scale_fill_manual(values = c("black", "orange"))
 alphaq0p2
 
-## p::demand curve dq0/dalpha
+## p::demand curve dq0/dalpha ----
+
+alphaq0p4d <- alphaq0d %>%
+    select(-c(std.error, p.value)) %>%
+    pivot_wider(
+        names_from = term,
+        values_from = estimate
+    )
+alphaq0p4d
+
+alpha_mid <- summary(alphaq0p4d$alpha)["Median"]
+q0_mid <- summary(alphaq0p4d$q0)["Median"]
+
+alphaq0p4 <- alphaq0p4d %>%
+    ggplot(aes(
+        alpha, q0
+    )) +
+    geom_point(size = 5, shape = 21, aes(fill = group), color = "black", alpha = 0.5) +
+    geom_vline(
+        xintercept = alpha_mid,
+        linetype = "dashed"
+    ) +
+    geom_hline(
+        yintercept = q0_mid,
+        linetype = "dashed"
+    ) +
+    scale_y_continuous(
+        breaks = seq(0, 30, 5),
+        limits = c(0, 30),
+        expand = c(0, 0)
+    ) +
+    scale_x_continuous(
+        transform = "log",
+        limits = c(exp(1)^-9, exp(1)^-6),
+        expand = c(0, 0),
+        breaks = scales::trans_breaks("log", function(x) exp(1)^x),
+        labels = scales::trans_format("log", scales::math_format(e^.x))
+    ) +
+    ggpubr::theme_pubr() +
+    theme_uncertainty +
+    ylab(latex2exp::TeX(r"($Q_{0}$)")) +
+    xlab(latex2exp::TeX(r"($\alpha$)")) +
+    scale_color_manual(values = c("black", "orange")) +
+    scale_fill_manual(values = c("black", "orange"))
+alphaq0p4
+
 alphaq0p3 <- broom::tidy(alpha_q0_emtrend$emtrends, conf.int = TRUE) %>%
     ggplot(aes(
         group, q0.trend
@@ -1092,7 +1141,7 @@ alphaq0p3 <- broom::tidy(alpha_q0_emtrend$emtrends, conf.int = TRUE) %>%
         limits = c(-0.2, 0.5),
         expand = c(0, 0)
     ) +
-    scale_x_discrete(labels = c("Ctrl", "Unc")) +
+    scale_x_discrete(labels = c("LU", "HU")) +
     ggpubr::theme_pubr() +
     theme_uncertainty +
     ylab(latex2exp::TeX(r"($\hat{\mu}_{\frac{\Delta Q_{0}}{\Delta \alpha}}$)")) +
@@ -1113,6 +1162,9 @@ rnap1 <- rnaseq_pdp %>%
         color = "black"
     ) +
     theme_uncertainty +
+    theme(
+        strip.text.x = element_text(size = 12)
+    ) +
     theme(strip.background = element_rect(fill = "white")) +
     ylab(latex2exp::TeX(r"($Pr(Group = HU)$)")) +
     xlab("Gene expression") +
@@ -1125,7 +1177,13 @@ rnap2 <- pdp_slopes %>%
     ggplot(aes(
         gene, estimate
     )) +
-    geom_pointrange(aes(ymin = conf.low, ymax = conf.high), color = "black", shape = 21) +
+    geom_pointrange(aes(ymin = conf.low, ymax = conf.high),
+        color = "black",
+        fill = "black",
+        alpha = 0.5,
+        size = 1,
+        shape = 21
+    ) +
     geom_hline(yintercept = 0, linetype = "dashed") +
     scale_y_continuous(
         breaks = seq(-0.05, 0.02, 0.01),
@@ -1144,21 +1202,117 @@ rnap3 <- rra_res %>%
     ggplot(aes(
         Name, Score
     )) +
-    geom_col(fill = NA, color = "black") +
+    geom_segment(aes(Name, xend = Name, y = exp(1)^1, yend = Score), color = "grey") +
+    geom_point(fill = "black") +
     scale_y_continuous(
-        transform = "log",
-        limits = c(exp(1)^-17, exp(1)^1),
+        transform = trans_reverser("log"),
+        limits = c(exp(1)^1, exp(1)^-20),
         expand = c(0, 0),
         breaks = scales::trans_breaks("log", function(x) exp(1)^x),
         labels = scales::trans_format("log", scales::math_format(e^.x))
     ) +
     theme_uncertainty +
     xlab("") +
-    ylab(latex2exp::TeX(r"($\rho_{Gene \ rank}$)"))
+    ylab(latex2exp::TeX(r"($\rho^{-1}_{Gene \ rank}$)"))
 rnap3
 
 
 # figures ----
+
+## fig1 ----
+exp_setup_fig1 <- fig(
+    path = "../figures/fig1_experimental_setup.png",
+    aspect.ratio = "free"
+) +
+    theme(text = element_text(size = 24))
+
+fig1 <-
+    exp_setup_fig1 + theme(aspect.ratio = 1) +
+    wp3 + theme(aspect.ratio = 1) +
+    ip3 + theme(aspect.ratio = 1) +
+    ip1 + theme(aspect.ratio = 1) +
+    frp1 + theme(aspect.ratio = 1) +
+    rlp1 + theme(aspect.ratio = 1) +
+    plot_layout(
+        ncol = 3,
+        nrow = 2,
+        widths = 1,
+        heights = 1
+    ) +
+    plot_annotation(tag_levels = c("A"))
+fig1
+
+## fig2 ----
+
+exp_setup_fig2 <- fig(
+    path = "../figures/fig2_experimental_setup.png",
+    aspect.ratio = "free"
+) +
+    theme(text = element_text(size = 24))
+
+fig2 <-
+    exp_setup_fig2 + theme(aspect.ratio = 1) +
+    dcp1 + theme(aspect.ratio = 1) +
+    alphaq0p1 + theme(aspect.ratio = 1) +
+    alphaq0p2 + theme(aspect.ratio = 1) +
+    alphaq0p4 + theme(aspect.ratio = 1) +
+    alphaq0p3 + theme(aspect.ratio = 1) +
+    plot_layout(
+        ncol = 3,
+        nrow = 2,
+        widths = 1,
+        heights = 1
+    ) +
+    plot_annotation(tag_levels = c("A"))
+fig2
+
+## fig3 ----
+
+exp_setup_fig3 <- fig(
+    path = "../figures/rna_seq_diag.png",
+    aspect.ratio = "free"
+) +
+    theme(text = element_text(size = 24))
+
+fig3 <-
+    exp_setup_fig3 +
+    rnap3 + theme(aspect.ratio = 1) +
+    rnap2 + theme(aspect.ratio = 1) +
+    rnap1 + theme(aspect.ratio = 1) +
+    plot_layout(
+        ncol = 2,
+        nrow = 2,
+        widths = 1,
+        heights = 1
+    ) +
+    plot_annotation(tag_levels = c("A"))
+fig3
+
+## fig4 ----
+
+exp_setup_fig4 <- fig(
+    path = "../figures/clarity_example_annotated.PNG",
+    aspect.ratio = "free"
+) +
+    theme(text = element_text(size = 24))
+
+fig4 <-
+    exp_setup_fig4 +
+    clarityp2 + theme(aspect.ratio = 1) +
+    clarityp1 + theme(aspect.ratio = 1) +
+    clarityp3 + theme(aspect.ratio = 1) +
+    clarityp4 + theme(aspect.ratio = 1) +
+    clarityp5 + theme(aspect.ratio = 1) +
+    plot_layout(
+        ncol = 3,
+        nrow = 2,
+        widths = 1,
+        heights = 1
+    ) +
+    plot_annotation(tag_levels = c("A"))
+fig4
+
+
 
 (wp1 + wp2 + wp3 + ip2 + ip3 + ip1) +
     plot_annotation(tag_levels = c("A"))
