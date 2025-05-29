@@ -7,13 +7,17 @@ pacman::p_load(
     magick,
     figpatch,
     DiagrammeR,
-    ggforce
+    ggforce,
+    ggthemes,
+    mgcv
 )
 setwd(this.path::here())
 
 # Plot stuff ----
-theme_uncertainty <- ggpubr::theme_pubr() +
+theme_uncertainty <-
+    theme_par() +
     update_geom_defaults("point", list(size = 5, alpha = 0.5, shape = 21)) +
+    update_geom_defaults("pointrange", list(linewidth = 1.5, size = 1.5)) +
     theme(
         text = element_text(size = 24),
         axis.text = element_text(size = 14),
@@ -678,7 +682,9 @@ clarityp4 <- total_counts %>%
     )) +
     geom_boxplot(outlier.shape = NA, aes(color = group), width = 0.5) +
     geom_point(aes(fill = group)) +
-    scale_x_discrete(labels = c("LU", "HU")) +
+    scale_x_discrete(
+        labels = c("LU", "HU")
+    ) +
     theme_uncertainty +
     scale_fill_manual(values = c("black", "orange")) +
     scale_color_manual(values = c("black", "orange")) +
@@ -1151,24 +1157,62 @@ alphaq0p3 <- broom::tidy(alpha_q0_emtrend$emtrends, conf.int = TRUE) %>%
 alphaq0p3
 
 ## p::rna-seq pdp ----
-rnap1 <- rnaseq_pdp %>%
+tmp <- rnaseq_pdp %>%
     filter(symbol %in% rra_res$Name) %>%
+    group_by(symbol) %>%
+    mutate(
+        x = scales::rescale(x, to = c(0, 1)),
+        yhat = scales::rescale(yhat, to = c(0, 1)),
+        symbol = as.factor(symbol)
+    ) %>%
+    select(symbol, x, yhat) %>%
+    drop_na()
+tmp
+
+mdl_tmp <- gam(
+    x ~ s(yhat, by = symbol),
+    data = tmp
+)
+
+pred_grid <- expand_grid(
+    yhat = seq(0, 1, 0.25),
+    x = seq(0, 1, 0.25),
+    symbol = unique(tmp$symbol)
+) %>%
+    mutate(
+        .pred = predict(mdl_tmp, newdata = .)
+    )
+
+rnap1 <- pred_grid %>%
     ggplot(aes(
-        x, yhat
+        yhat, symbol,
+        fill = .pred
     )) +
-    geom_smooth(
-        method = "lm",
-        formula = y ~ poly(x, 3, raw = TRUE),
-        color = "black"
+    geom_tile() +
+    scale_x_continuous(
+        breaks = seq(0, 1, 0.25),
+        expand = c(0, 0)
+    ) +
+    scale_y_discrete(
+        expand = c(0, 0)
+    ) +
+    scale_fill_gradient(
+        low = "white",
+        high = "orange",
+        limits = c(0, 1),
+        breaks = c(0.1, 0.9),
+        labels = c("Low", "High")
     ) +
     theme_uncertainty +
     theme(
-        strip.text.x = element_text(size = 12)
+        legend.position = "right"
     ) +
-    theme(strip.background = element_rect(fill = "white")) +
-    ylab(latex2exp::TeX(r"($Pr(Group = HU)$)")) +
-    xlab("Gene expression") +
-    facet_wrap(~symbol, scale = "free")
+    labs(
+        fill = "Expression"
+    ) +
+    coord_fixed(1 / 4) +
+    xlab(latex2exp::TeX(r"($\hat{\mu}_{\frac{\Delta Pr(Group = HU)}{\Delta Gene \ expression}}$)")) +
+    ylab("")
 rnap1
 
 ## p::rna-seq pdp-slopes ----
@@ -1192,7 +1236,8 @@ rnap2 <- pdp_slopes %>%
     ) +
     xlab("") +
     ylab(latex2exp::TeX(r"($\hat{\mu}_{\frac{\Delta Pr(Group = HU)}{\Delta Gene \ expression}}$)")) +
-    theme_uncertainty
+    theme_uncertainty +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 rnap2
 
 ## p::rna-seq gene rank ----
@@ -1213,7 +1258,8 @@ rnap3 <- rra_res %>%
     ) +
     theme_uncertainty +
     xlab("") +
-    ylab(latex2exp::TeX(r"($\rho^{-1}_{Gene \ rank}$)"))
+    ylab(latex2exp::TeX(r"($\rho^{-1}_{Gene \ rank}$)")) +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 rnap3
 
 
@@ -1241,6 +1287,14 @@ fig1 <-
     ) +
     plot_annotation(tag_levels = c("A"))
 fig1
+ggsave(
+    plot = fig1,
+    filename = "../figures/fig1.png",
+    width = 5120,
+    height = 2880,
+    units = "px",
+    dpi = 300
+)
 
 ## fig2 ----
 
@@ -1264,7 +1318,14 @@ fig2 <-
         heights = 1
     ) +
     plot_annotation(tag_levels = c("A"))
-fig2
+ggsave(
+    plot = fig2,
+    filename = "../figures/fig2.png",
+    width = 5120,
+    height = 2880,
+    units = "px",
+    dpi = 300
+)
 
 ## fig3 ----
 
@@ -1272,21 +1333,32 @@ exp_setup_fig3 <- fig(
     path = "../figures/rna_seq_diag.png",
     aspect.ratio = "free"
 ) +
-    theme(text = element_text(size = 24))
+    theme(
+        plot.margin = unit(c(0, 0, 0, 0), "cm"),
+        text = element_text(size = 24)
+    )
 
 fig3 <-
-    exp_setup_fig3 +
-    rnap3 + theme(aspect.ratio = 1) +
-    rnap2 + theme(aspect.ratio = 1) +
-    rnap1 + theme(aspect.ratio = 1) +
+    (exp_setup_fig3 + theme(aspect.ratio = 2)) +
+    (rnap3 + theme(aspect.ratio = 1)) /
+        (rnap2 + theme(aspect.ratio = 1)) +
+    (rnap1 + theme(aspect.ratio = 1)) +
     plot_layout(
-        ncol = 2,
-        nrow = 2,
-        widths = 1,
+        ncol = 3,
+        nrow = 1,
+        widths = c(1, 1, 1, 1),
         heights = 1
     ) +
     plot_annotation(tag_levels = c("A"))
 fig3
+ggsave(
+    plot = fig3,
+    filename = "../figures/fig3.png",
+    width = 5120,
+    height = 2880,
+    units = "px",
+    dpi = 300
+)
 
 ## fig4 ----
 
@@ -1310,17 +1382,11 @@ fig4 <-
         heights = 1
     ) +
     plot_annotation(tag_levels = c("A"))
-fig4
-
-
-
-(wp1 + wp2 + wp3 + ip2 + ip3 + ip1) +
-    plot_annotation(tag_levels = c("A"))
-
-(frp1 + rlp1 + dcp1 + alphaq0p1 + alphaq0p2 + alphaq0p3) +
-    plot_annotation(tag_levels = c("A"))
-
-(rnap3 + rnap2 + rnap1) +
-    plot_annotation(tag_levels = c("A"))
-
-(clarityp2 | clarityp3 / clarityp1)
+ggsave(
+    plot = fig4,
+    filename = "../figures/fig4.png",
+    width = 5120,
+    height = 2880,
+    units = "px",
+    dpi = 300
+)
