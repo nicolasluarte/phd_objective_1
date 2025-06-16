@@ -672,6 +672,7 @@ pos_emm <- emmeans::emmeans(
 pos_emm
 
 pos_emm_p <- broom.mixed::tidy(pos_emm$emmeans, conf.int = TRUE)
+broom.mixed::tidy(pos_emm$contrasts, conf.int = TRUE)
 
 
 ## p::clarity total counts ----
